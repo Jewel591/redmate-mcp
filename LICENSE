@@ -1,0 +1,25 @@
+RedMate — Proprietary License
+
+Copyright (c) 2026 RedMate. All rights reserved.
+
+This repository contains marketing materials, product documentation, and
+release notes for RedMate, a commercial macOS application. The RedMate
+software itself is proprietary and is not distributed in this repository.
+
+NO LICENSE IS GRANTED to copy, modify, distribute, sublicense, or create
+derivative works of any RedMate software, source code, binaries, brand
+assets, screenshots, or documentation, except where explicitly permitted
+in writing by the copyright holder.
+
+Issues and pull requests against the contents of this public repository
+(README, documentation, release notes) are welcome under standard
+contribution practices and will be reviewed at the maintainer's discretion.
+Submitting a contribution does not grant the contributor any rights to
+the underlying RedMate software.
+
+The RedMate application binary is distributed under a separate End User
+License Agreement (EULA) presented at install time. The EULA, not this
+file, governs use of the installed application.
+
+For licensing inquiries, partnerships, or permission requests, contact:
+support@redmate.app
