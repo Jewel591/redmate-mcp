@@ -1,12 +1,13 @@
 <div align="center">
 
-# RedMate
+# RedMate · 小薯兔 🍠
 
-**Native macOS desktop client for Xiaohongshu (RED · Little Red Book) — multi-account, auto-publish, scheduled posts, built-in MCP Server.**
+**A Mac desktop assistant built for Xiaohongshu (RED · Little Red Book) creators — multi-account, batch publish, scheduled posts.**
+
+> Chinese name: **小薯兔** (xiǎo shǔ tù — "little sweet-potato bunny")
 
 [![macOS](https://img.shields.io/badge/macOS-12%2B-black?logo=apple&logoColor=white)](#)
-[![Electron](https://img.shields.io/badge/Electron-2B2E3A?logo=electron&logoColor=white)](#)
-[![MCP](https://img.shields.io/badge/MCP-Server-7c3aed)](#)
+[![Beta](https://img.shields.io/badge/Beta-Private%20Beta-f59e0b)](#)
 [![License](https://img.shields.io/badge/license-Proprietary-d7472e)](LICENSE)
 
 [Website](https://redmate.app) · [简体中文](README.md)
@@ -17,28 +18,41 @@
 
 ## What is RedMate
 
-**RedMate** is a native macOS desktop assistant for **Xiaohongshu** (also known as **Little Red Book**, **RED**, **XHS**, or **小红书**) — China's largest lifestyle and shopping social network with 300M+ monthly active users.
+**RedMate · 小薯兔** is a Mac desktop app that lets you manage multiple **Xiaohongshu** (also known as **Little Red Book**, **RED**, **XHS**, or **小红书**) accounts on your own Mac, batch-publish image notes, and schedule posts to go out on time.
 
-It puts everything Xiaohongshu creators do every day — login, publish image notes, schedule content, manage multiple accounts — into one Mac app. And it ships with a built-in **MCP (Model Context Protocol) Server** so you can drive your Xiaohongshu account from **Claude Desktop**, **Cursor**, **Cline**, or any MCP-compatible AI client.
+It also works with AI assistants like ChatGPT and Claude — say "post this set of photos with the hashtag #autumn-outfit on Wednesday at noon" and the AI does the rest.
+
+Xiaohongshu is China's largest lifestyle and shopping social network with 300M+ monthly active users. Creators who post there every day deserve a tool that scales their work, not one that gets in the way.
 
 ## Why RedMate
 
-- 🍎 **Truly native macOS** — not a web wrapper. Native menubar, tray, notifications, dark mode
-- 🔐 **Multi-account, isolated** — every account in its own browser session, no cookie cross-contamination
-- ✍️ **Image-note publishing** — pick photos, write captions, add hashtags, mention users, set location, crop covers
-- ⏰ **Scheduled posts** — queue a week of content, the app keeps the schedule running in the background
-- 🤖 **Built-in MCP Server** — let Claude / Cursor / Cline operate your account through the standard MCP protocol
-- 🔒 **Local-first, encrypted** — cookies stored via macOS Keychain (`safeStorage`). Your credentials never leave your Mac
-- 🎯 **Production-grade automation** — driven by Chrome DevTools Protocol, not brittle DOM scripts
+- 🍎 **Built for Mac** — menubar, tray, system notifications, dark-mode follow; fits the way you already use macOS
+- 🔐 **Multi-account, isolated** — each account in its own session, no cookie cross-contamination, no constant re-scanning QR codes
+- ✍️ **Image-note publishing** — pick photos, write captions, add hashtags, mention users, set location, crop covers — all in-app
+- ⏰ **Scheduled posts** — queue a week of content; if your Mac sleeps or restarts, the schedule resumes where it left off
+- 🤖 **AI assistant mode** — let Claude / ChatGPT pick topics, draft captions, and publish for you end-to-end
+- 🔐 **Account credentials stay local** — login data is encrypted via the macOS Keychain; **nothing is uploaded to the cloud**
+- 🛡️ **Reliable** — built to last; we keep up with Xiaohongshu's UI changes so you don't have to
+
+## Privacy & Security
+
+Trusting a third-party tool with your accounts is a high-anxiety move, so we put the rules up front:
+
+- **Local-first** — your notes, drafts, and login sessions live on your Mac
+- **No content collection** — we never read or upload your post content, images, or DMs
+- **Encrypted at rest** — login data is encrypted via the macOS Keychain
+- **Real-browser operation** — RedMate logs in and posts through a real browser on your Mac, **no different from how you'd do it by hand**, and never calls undocumented Xiaohongshu APIs
+
+> No third-party tool can fully guarantee platform-policy outcomes — please use responsibly.
 
 ## Features
 
 | Module | Capability | Status |
 |---|---|---|
-| **Accounts** | QR-code login · multi-account · Keychain-encrypted cookies · auto-renewal | ✅ Shipped |
+| **Accounts** | QR-code login · multi-account · Keychain-encrypted · auto-renewal | ✅ Shipped |
 | **Image notes** | Image notes · hashtags / mentions / location · cover crop · drafts | ✅ Shipped |
 | **Scheduling** | Publish queue · background daemon · auto-retry · resume after restart | ✅ Shipped |
-| **MCP** | HTTP SSE Server · standard MCP protocol · Claude / Cursor / Cline compatible | ✅ Shipped |
+| **AI integration** | Compatible with Claude / ChatGPT and major AI assistants | ✅ Shipped |
 | **Video notes** | Video notes · multi-segment covers · captions | 🚧 In progress |
 | **Comments / DM** | AI auto-reply · keyword routing · inbox | 🚧 Planned |
 | **Analytics** | Note performance · follower growth · engagement trends | 🚧 Planned |
@@ -46,9 +60,16 @@ It puts everything Xiaohongshu creators do every day — login, publish image no
 
 ## Screenshots
 
-> Screenshots will be added during public beta.
+> Demo videos and screenshots will be added before public beta.
 
-## Install
+## Who It's For
+
+- 📒 **Independent creators** — get out of phones and browsers, spend more time on ideas and content
+- 🏢 **MCN agencies / studios** — manage many creator accounts at once, schedule and dispatch in batches
+- 💼 **Brand operators / managed accounts** — schedule posts for clients, never miss a publish window
+- 🤖 **AI-first creators** — already using ChatGPT / Claude to draft? Let the AI take it all the way to publish
+
+## Install & Try
 
 | Channel | Status |
 |---|---|
@@ -57,21 +78,13 @@ It puts everything Xiaohongshu creators do every day — login, publish image no
 
 👉 **Join the beta at [redmate.app](https://redmate.app).**
 
-## MCP Integration
+> Free during the private beta. The release version will offer a Free tier plus Pro / Team subscriptions.
 
-When RedMate is running, it exposes a local MCP HTTP SSE Server on `127.0.0.1`. Add this to your Claude Desktop config:
+## Working with AI Assistants
 
-```json
-{
-  "mcpServers": {
-    "redmate": {
-      "url": "http://127.0.0.1:PORT/sse"
-    }
-  }
-}
-```
+If you already use Claude, ChatGPT, or similar AI clients, RedMate lets the AI drive your Xiaohongshu account directly.
 
-Then talk to Claude:
+Talk to your AI like this:
 
 > "Create a draft for this skincare note and schedule it for Wednesday at noon. Use hashtags #autumn-skincare and #daily."
 >
@@ -79,84 +92,58 @@ Then talk to Claude:
 >
 > "Show me which accounts I have logged in, and switch the active one to 'daily-thoughts'."
 
-### Available MCP Tools (17)
+The AI calls RedMate's publish, schedule, and account-management capabilities behind the scenes — you don't open a browser or edit config files.
 
-**Accounts**
-- `xhs_list_accounts` — list logged-in accounts
-- `xhs_get_active_account` — get the current active account
-- `xhs_set_active_account` — switch the active account
-- `xhs_check_login` — verify login state
-- `xhs_open_login_window` — open the QR-code login window
-- `xhs_remove_account` — remove an account
-
-**Drafts**
-- `xhs_draft_create` — create a draft
-- `xhs_draft_get` — get draft details
-- `xhs_draft_list` — list drafts
-- `xhs_draft_update` — update a draft
-- `xhs_draft_delete` — delete a draft
-- `xhs_draft_publish_now` — publish a draft immediately
-- `xhs_draft_schedule` — schedule a draft for later
-
-**Publishing & Tasks**
-- `xhs_publish_note` — publish an image note directly
-- `xhs_publication_tasks_list` — list publication tasks
-- `xhs_publication_tasks_get` — get task details
-- `xhs_publication_tasks_cancel` — cancel a scheduled publication
-
-More tools (video publishing, comments / DMs, analytics) are rolling out.
+> For developers: RedMate connects to AI clients via the standard MCP (Model Context Protocol). See the [developer docs](https://redmate.app/docs/mcp) (in progress) for setup details.
 
 ## System Requirements
 
 - **macOS 12** (Monterey) or later
-- **Apple Silicon** and **Intel** both supported
+- **Apple Silicon** (M-series) and **Intel** Macs both supported
 - ~300 MB disk space
 
 ## FAQ
 
-**Is this open source?**
-No. RedMate is a commercial product. This repository is only for product information and release notes. See [LICENSE](LICENSE).
-
 **Will my account get banned?**
-RedMate closely mimics real human browser behavior and never calls private Xiaohongshu APIs. That said, no third-party tool can fully guarantee platform-policy outcomes — please use responsibly.
+RedMate logs in and posts through a real browser on your own Mac — no different from doing it by hand — and never calls undocumented Xiaohongshu APIs. That said, platform policy itself carries inherent uncertainty, so please use responsibly.
 
 **Windows / Linux?**
 macOS only for now. Windows is on the roadmap but lower priority; no Linux plans.
 
 **Pricing?**
-Free tier plus Pro / Team subscriptions. See the website for details.
+Free during the private beta. The release version will offer a Free tier plus Pro / Team subscriptions, with pricing announced before public beta.
 
-**vs. open-source CLI tools?**
-CLIs are great for developers. RedMate is built for every creator — full GUI, scheduling, multi-account, AI co-piloting — things a CLI cannot give you.
+**Is my account data uploaded?**
+No. Notes, drafts, and login sessions stay on your Mac. Login data is encrypted via the macOS Keychain.
 
 ## Roadmap
 
 - [x] Multi-account management & auto-login detection
 - [x] Image-note publishing
-- [x] Built-in MCP Server
 - [x] Scheduled posts (draft scheduling + task management)
-- [ ] Video-note publishing
-- [ ] Analytics dashboard (note performance · follower growth)
-- [ ] Comments / DM AI assistant
-- [ ] Team workspace
+- [x] AI assistant integration
+- [ ] Video-note publishing (2026 Q3)
+- [ ] Analytics dashboard: note performance · follower growth (2026 Q3)
+- [ ] Comments / DM AI assistant (2026 Q4)
+- [ ] Team workspace (Pro)
 - [ ] Mac App Store release
 
 ## Keywords
 
-xiaohongshu · xhs · redbook · little red book · RED · 小红书 · xiaohongshu automation · xiaohongshu publishing tool · xiaohongshu desktop client · xiaohongshu mac client · xiaohongshu mcp · MCP server · Model Context Protocol · Claude · Cursor · Cline · AI agent · content creation · social media management · creator tools
+xiaohongshu · xhs · redbook · little red book · RED · 小红书 · xiaohongshu mac client · xiaohongshu desktop assistant · xiaohongshu scheduling tool · xiaohongshu multi-account · xiaohongshu batch publish · MCN tool · creator tools · social media management · content creation
 
 ## Contact
 
 - Website: [redmate.app](https://redmate.app)
-- Email: [support@redmate.app](mailto:support@redmate.app)
+- Email: [ivensliao@qq.com](mailto:ivensliao@qq.com)
 - Feedback: open an [Issue](../../issues)
 
 ---
 
 <div align="center">
 
-**RedMate · Let AI run your Xiaohongshu.**
+**RedMate · 小薯兔 🍠 · A Mac desktop assistant for Xiaohongshu creators**
 
-Made with 🍎 on macOS
+Made for Mac creators
 
 </div>
